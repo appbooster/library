@@ -1,7 +1,13 @@
 <template>
-  <div id="app">
+  <v-app>
     <p>{{ message }}</p>
-  </div>
+    <v-alert
+      :value="true"
+      type="success"
+    >
+      This is a success alert.
+    </v-alert>
+  </v-app>
 </template>
 
 <script>

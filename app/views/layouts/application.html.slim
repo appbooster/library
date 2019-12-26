@@ -2,10 +2,12 @@ doctype html
 html
   head
     title
-      | AppboosterLibrary
+      | Appbooster Library
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet" /
+    link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel=("    stylesheet") /
+    = javascript_pack_tag 'library_index'
   body
     = yield
