@@ -5,19 +5,39 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
+// import Vue from 'vue'
+// import App from '../app.vue'
+// import vuetify from '../plugins/vuetify'
+// import 'vuetify/dist/vuetify.min.css'
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     vuetify,
+//     render: h => h(App)
+//   }).$mount()
+//   document.body.appendChild(app.$el)
+//
+//   console.log(app)
+// })
+
 import Vue from 'vue'
+import TurbolinksAdapter from 'vue-turbolinks'
+Vue.use(TurbolinksAdapter)
+
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
+import vuetify from '../plugins/vuetify' // path to vuetify export
+
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    vuetify,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
-
-  console.log(app)
 })
-
-
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
 // need to always use single file components.
