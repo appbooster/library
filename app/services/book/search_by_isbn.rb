@@ -12,7 +12,7 @@ class Book::SearchByIsbn
   end
 
   def build_book(response)
-    return if response["totalItems"].zero?
+    return { found: false } if response["totalItems"].zero?
 
     book_object = response.dig("items", 0, "volumeInfo")
     identifiers = book_object["industryIdentifiers"].each_with_object({}) do  |id, obj|
@@ -20,15 +20,18 @@ class Book::SearchByIsbn
     end
 
     {
-      title: book_object["title"],
-      subtitle: book_object["subtitle"],
-      authors: book_object["authors"].join(", "),
-      publisher: book_object["publisher"],
-      description: book_object["description"],
-      isbn_10: identifiers["ISBN_10"],
-      isbn_13: identifiers["ISBN_13"],
-      cover_image: book_object.dig("imageLinks", "thumbnail"),
-      page_count: book_object["pageCount"]
+      found: true,
+      result: {
+        title: book_object["title"],
+        subtitle: book_object["subtitle"],
+        authors: book_object["authors"].join(", "),
+        publisher: book_object["publisher"],
+        description: book_object["description"],
+        isbn_10: identifiers["ISBN_10"],
+        isbn_13: identifiers["ISBN_13"],
+        cover_image: book_object.dig("imageLinks", "thumbnail"),
+        page_count: book_object["pageCount"]
+      }
     }
   end
 end
