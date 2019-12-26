@@ -19,6 +19,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module AppboosterLibrary
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -31,5 +33,8 @@ module AppboosterLibrary
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.paths.add "lib", eager_load: true
+    config.time_zone = "Samara"
   end
 end
