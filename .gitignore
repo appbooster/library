@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Environment files that may contain sensitive data
+.env
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
