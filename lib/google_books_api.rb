@@ -21,6 +21,6 @@ class GoogleBooksApi
     body = response.body
     raise "#{status}, #{body}" unless status == 200
 
-    body
+    JSON.parse(body)
   end
 end
