@@ -24,4 +24,5 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* API
+api/v1/books/ – get all books
