@@ -28,8 +28,12 @@ gem 'slim-rails'
 
 gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'carrierwave'
 gem 'dotenv-rails'
 gem 'faraday'
+gem 'jwt'
+gem 'mini_magick'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
