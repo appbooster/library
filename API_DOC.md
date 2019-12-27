@@ -1,5 +1,27 @@
 # Appbooster Library API documentation
 
+## Аутентификация
+    Пользователи аутентифицируются со своим google-аккунтом в домене appbooster.ru
+    При обращении к endpoint /auth/google_oauth2 происходит перенаправление на страницу логина в google, 
+    а затем на /auth/google_oauth2/callback
+    
+    С коллбэком от Google приходит объект c даными пользователя и его идентификатором google_uid.
+    Если пользователь с таким google_uid отсутствует в базе, создается новый, иначе возвращается существующий.
+    
+    Закодированный google_uid возвращается на клиент в виде JWT
+
+    GET /auth/google_oauth2
+    
+    {
+        "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiM...xdG60B84Ew-qf3jVGN9RHuGaNZAUDV70o55cgcyMWCc",
+        "token_type": "Bearer",
+        "expires_in": 604800 // 7 дней
+    }
+    
+    Клиент должен во все последующие запросы к API добавлять заголовок:
+    
+    Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiM...xdG60B84Ew-qf3jVGN9RHuGaNZAUDV70o55cgcyMWCc
+
 ## Книги
 
 ### Получение списка книг
