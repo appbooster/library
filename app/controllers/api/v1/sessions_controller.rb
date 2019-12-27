@@ -13,7 +13,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
   end
 
   def create
-    user_params = params.require(:user).permit(%i[email google_uid first_name last_name remote_avatar_url])
+    user_params = params.require(:user).permit(%i[email google_uid first_name last_name])
     result = User::AuthWithGoogleOauth.new.call(user_params)
 
     if result.success?
@@ -28,8 +28,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
       email: auth.info[:email],
       google_uid: auth.uid.to_s,
       first_name: auth.info[:first_name],
-      last_name: auth.info[:last_name],
-      remote_avatar_url: auth.info[:image]
+      last_name: auth.info[:last_name]
     }
   end
 end
