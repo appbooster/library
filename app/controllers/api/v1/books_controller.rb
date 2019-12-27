@@ -14,7 +14,7 @@ class Api::V1::BooksController < ApiController
     if book.save
       render json: book
     else
-      render json: { errors: book.errors }
+      render status: :unprocessable_entity, json: { errors: book.errors }
     end
   end
 
