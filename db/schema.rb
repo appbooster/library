@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_102646) do
+ActiveRecord::Schema.define(version: 2019_12_27_054612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2019_12_26_102646) do
     t.integer "page_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "avatar"
+    t.string "google_uid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["google_uid"], name: "index_users_on_google_uid"
   end
 
 end

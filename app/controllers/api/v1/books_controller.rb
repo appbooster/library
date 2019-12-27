@@ -1,4 +1,4 @@
-class Api::V1::BooksController < ApiController
+class Api::V1::BooksController < Api::V1::BaseController
   def index
     books = Book.all
     render json: books, each_serializer: Api::V1::BookSerializer
