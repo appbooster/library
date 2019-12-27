@@ -1,6 +1,6 @@
 # Appbooster Library API documentation
 
-## Аутентификация
+## Аутентификация через Google (на сервере)
     Пользователи аутентифицируются со своим google-аккунтом в домене appbooster.ru
     При обращении к endpoint /auth/google_oauth2 происходит перенаправление на страницу логина в google, 
     а затем на /auth/google_oauth2/callback
@@ -12,6 +12,30 @@
 
     GET /auth/google_oauth2
     
+    {
+        "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiM...xdG60B84Ew-qf3jVGN9RHuGaNZAUDV70o55cgcyMWCc",
+        "token_type": "Bearer",
+        "expires_in": 604800 // 7 дней
+    }
+
+## Аутентификация через Google (на клиенте)
+    Мобильный клиент самостоятельно получает от Google объект с информацией о пользователе и его google_uid
+    и присылает на сервер в теле POST-запроса.
+     
+    POST http://library.appbooster.com/api/v1/login
+    
+    PARAMS
+    {
+        user: {
+            email: "mail@appbooster.ru",
+            google_uid: "1111",
+            first_name: "Ivan",
+            last_name: "Inanov",
+            remote_avatar_url: "https://ololo.com/avatar.png"
+        } 
+    }
+    
+    RESPONSE
     {
         "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiM...xdG60B84Ew-qf3jVGN9RHuGaNZAUDV70o55cgcyMWCc",
         "token_type": "Bearer",
