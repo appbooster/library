@@ -24,16 +24,21 @@ import Vue from 'vue'
 import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(TurbolinksAdapter)
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import vuetify from '../plugins/vuetify' // path to vuetify export
-
+import {store} from '../store'
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify,
+    store,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
