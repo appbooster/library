@@ -10,7 +10,7 @@
       ></v-text-field>
     </v-col>
     <v-col
-      v-for="book in books"
+      v-for="book in BOOKS"
       :key="book.id"
       cols="12"
     >
@@ -48,6 +48,7 @@
 
 <script>
   import axios from 'axios'
+  import {mapGetters} from 'vuex'
 
   export default {
     data: function() {
@@ -59,10 +60,9 @@
     created: function() {
       this.json_api_url = `/api/v1/books`
     },
+    computed: mapGetters(['BOOKS']),
     mounted: function() {
-      axios
-        .get(this.json_api_url)
-        .then(response => (this.books = response.data.books));
+      this.$store.dispatch('GET_BOOKS');
     },
     methods: {
       // SearchQueryChange: function(search_query) {
