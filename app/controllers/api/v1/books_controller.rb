@@ -18,6 +18,11 @@ class Api::V1::BooksController < ApiController
     end
   end
 
+  def show
+    book = Book.find(params[:id])
+    render json: book
+  end
+
   private
 
   def book_params
