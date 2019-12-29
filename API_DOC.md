@@ -46,6 +46,23 @@
     
     Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiM...xdG60B84Ew-qf3jVGN9RHuGaNZAUDV70o55cgcyMWCc
 
+## Профиль пользователя
+
+    GET /api/v1/profile
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "profile": {
+            "id": 2,
+            "email": "selivanova@appbooster.ru",
+            "full_name": "Selivanova Anna"
+        }
+    }
+
 ## Книги
 
 ### Получение списка книг

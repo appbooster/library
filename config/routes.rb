@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "/login", to: "sessions#create"
 
+      resource :profile, only: :show
+
       resources :books, except: %i[new edit update destroy] do
         collection do
           get :search
