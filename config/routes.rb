@@ -13,6 +13,11 @@ Rails.application.routes.draw do
         collection do
           get :search
         end
+
+        member do
+          post :take
+          post :give_back
+        end
       end
     end
   end

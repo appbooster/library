@@ -7,4 +7,8 @@ class Book < ApplicationRecord
   validates :title, :authors, presence: true
   validates :total_items_count, numericality: { only_integer: true, allow_nil: true }
   validates :available_items_count, numericality: { only_integer: true, allow_nil: true }
+
+  def taken_by?(user)
+    current_readers.pluck(:user_id).include?(user.id)
+  end
 end
