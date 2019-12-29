@@ -28,9 +28,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-
 import vuetify from '../plugins/vuetify' // path to vuetify export
 import {store} from '../store'
 import App from '../app.vue'

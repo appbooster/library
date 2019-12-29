@@ -47,7 +47,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import {mapGetters} from 'vuex'
 
   export default {
@@ -57,11 +56,9 @@
         books: []
       };
     },
-    created: function() {
-      this.json_api_url = `/api/v1/books`
-    },
     computed: mapGetters(['BOOKS']),
     mounted: function() {
+      this.$store.dispatch('LOGIN_USER');
       this.$store.dispatch('GET_BOOKS');
     },
     methods: {
