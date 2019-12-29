@@ -1,6 +1,6 @@
 class Api::V1::BooksController < Api::V1::BaseController
   def index
-    books = Book.all
+    books = Book.includes(:active_book_reader_interactions)
     render json: books, each_serializer: Api::V1::BookSerializer
   end
 
