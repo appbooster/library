@@ -69,7 +69,15 @@
                 "cover_image": "http://books.google.com/books/content?id=ehpKDwAAQBAJ\u0026printsec=frontcover\u0026img=1\u0026zoom=1\u0026edge=curl\u0026source=gbs_api",
                 "page_count": 640,
                 "total_items_count": 2,
-                "available_items_count": 1
+                "available_items_count": 1,
+                "current_readers": [
+                    {
+                        "id": 2,
+                        "email": "selivanova@appbooster.ru",
+                        "full_name": "Selivanova Anna",
+                        "read_since": "2019-12-29T14:09:17.592+04:00"
+                    }
+                ]
             },
             ...
         ]
@@ -170,6 +178,70 @@
             "cover_image": "http://books.google.com/books/content?id=9Fd2DgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
             "page_count": 272,
             "total_items_count": 2,
-            "available_items_count": 1
+            "available_items_count": 1,
+            "current_readers": [
+                {
+                    "id": 2,
+                    "email": "selivanova@appbooster.ru",
+                    "full_name": "Selivanova Anna",
+                    "read_since": "2019-12-29T14:09:17.592+04:00"
+                }
+            ]
         }
+    }
+
+### Взять книгу
+
+    POST /api/v1/books/:id/take
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "book": {                       // полный ответ см. в GET /api/v1/books/:id
+            "id": 2,
+            "title": "Первые 90 дней",
+            ...
+        }
+    }
+    
+    Если все экземпляры заняты:
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "No items available"
+    }
+    
+    Если книга уже на руках и текущего пользователя:
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "You already took this book"
+    }
+
+
+### Вернуть книгу
+
+    POST /api/v1/books/:id/give_back
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "book": {                       // полный ответ см. в GET /api/v1/books/:id
+            "id": 2,
+            "title": "Первые 90 дней",
+            ...
+        }
+    }
+    
+    Если запись о том, что юзер взял эту книгу, не нйдена:
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "You didn't take this book"
     }

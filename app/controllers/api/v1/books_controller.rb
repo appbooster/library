@@ -1,6 +1,6 @@
 class Api::V1::BooksController < Api::V1::BaseController
   def index
-    books = Book.all
+    books = Book.includes(:active_book_reader_interactions)
     render json: books, each_serializer: Api::V1::BookSerializer
   end
 
@@ -22,6 +22,28 @@ class Api::V1::BooksController < Api::V1::BaseController
   def show
     book = Book.find(params[:id])
     render json: book
+  end
+
+  def take
+    book = Book.find(params[:id])
+    result = Book::Take.new.call(book: book, user: @current_user)
+
+    if result.success?
+      render json: result.value, serializer: Api::V1::BookSerializer
+    else
+      render json: result, status: :unprocessable_entity
+    end
+  end
+
+  def give_back
+    book = Book.find(params[:id])
+    result = Book::GiveBack.new.call(book: book, user: @current_user)
+
+    if result.success?
+      render json: result.value, serializer: Api::V1::BookSerializer
+    else
+      render json: result, status: :unprocessable_entity
+    end
   end
 
   private
