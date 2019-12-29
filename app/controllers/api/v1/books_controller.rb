@@ -11,6 +11,7 @@ class Api::V1::BooksController < Api::V1::BaseController
 
   def create
     book = Book.new(book_params)
+    book.available_items_count = book_params[:total_items_count]
     if book.save
       render json: book
     else
@@ -26,7 +27,8 @@ class Api::V1::BooksController < Api::V1::BaseController
   private
 
   def book_params
-    permitted_params = %i[title subtitle authors publisher description cover_image page_count isbn_10 isbn_13]
+    permitted_params = %i[title subtitle authors publisher description cover_image page_count isbn_10 isbn_13
+                          total_items_count]
     params.require(:book).permit(permitted_params)
   end
 end
