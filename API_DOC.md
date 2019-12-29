@@ -67,7 +67,9 @@
                 "publisher": "\"Издательский дом \"\"Питер\"\"\"",
                 "description": "В этой книге вы найдете ключевые принципы, алгоритмы и компромиссы...",
                 "cover_image": "http://books.google.com/books/content?id=ehpKDwAAQBAJ\u0026printsec=frontcover\u0026img=1\u0026zoom=1\u0026edge=curl\u0026source=gbs_api",
-                "page_count":640
+                "page_count": 640,
+                "total_items_count": 2,
+                "available_items_count": 1
             },
             ...
         ]
@@ -120,7 +122,8 @@
             isbn_10: "5001006139",
             isbn_13: "9785001006138",
             cover_image: "http://books.google.com/books/content?id=9Fd2DgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-            page_count: 272
+            page_count: 272,
+            total_items_count: 1
         }
     }
     
@@ -160,6 +163,13 @@
             "title": "Первые 90 дней",
             "subtitle": "Стратегии успеха для новых лидеров всех уровней",
             "authors": "Майкл Уоткинс",
-            ...
+            "publisher": "Манн, Иванов и Фербер",
+            "description": "Как показывает практика, самый рискованный период для любого менеджера на новой работе...",
+            "isbn_10": "5001006139",
+            "isbn_13": "9785001006138",
+            "cover_image": "http://books.google.com/books/content?id=9Fd2DgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+            "page_count": 272,
+            "total_items_count": 2,
+            "available_items_count": 1
         }
     }
