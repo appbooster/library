@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :book_reader_interactions
+  has_many :books, through: :book_reader_interactions
+
   # Does not work on Heroku
   # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku
   # mount_uploader :avatar, AvatarUploader
