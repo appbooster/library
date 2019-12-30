@@ -8,7 +8,7 @@ if (user_token) {
 const state = {
   status: '',
   user_token: localStorage.getItem('user-token') || '',
-  user : {}
+  user : null
 }
 
 const getters = {
@@ -31,12 +31,7 @@ const mutations = {
 
 const actions = {
   LOGIN_USER: async (context, payload) => {
-    console.log('LOGIN_USER context', context)
-    let {data} = await Axios.post('/api/v1/login', {
-      "user": {
-        "google_uid": "101441826224058892832"
-      }
-    })
+    let {data} = await Axios.post('/api/v1/login', payload)
     localStorage.setItem('user-token', data.access_token)
     context.commit('SET_USER_TOKEN', data.access_token)
   },

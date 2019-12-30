@@ -56,10 +56,9 @@
         books: []
       };
     },
-    computed: mapGetters(['BOOKS']),
+    computed: mapGetters(['USER_PROFILE','BOOKS']),
     mounted: function() {
-      this.$store.dispatch('LOGIN_USER');
-      this.$store.dispatch('GET_BOOKS');
+      this.$store.dispatch('GET_BOOKS')
     },
     methods: {
       // SearchQueryChange: function(search_query) {

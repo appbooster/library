@@ -49,6 +49,7 @@
 <script>
 import BooksList from 'components/bookslist'
 import UserProfile from 'components/userprofile'
+import {mapGetters} from 'vuex'
 
 export default {
   components: {
@@ -59,6 +60,10 @@ export default {
     return {
       tabs: null
     };
+  },
+  computed: mapGetters(['USER_PROFILE']),
+  mounted: function() {
+    this.$store.dispatch('GET_PROFILE');
   },
 }
 </script>

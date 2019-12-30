@@ -30,6 +30,9 @@ Vue.use(Vuex)
 
 import vuetify from '../plugins/vuetify' // path to vuetify export
 import {store} from '../store'
+import GSignInButton from 'vue-google-signin-button'
+Vue.use(GSignInButton)
+
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
