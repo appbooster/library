@@ -94,6 +94,18 @@
                         "full_name": "Selivanova Anna",
                         "read_since": "2019-12-29T14:09:17.592+04:00"
                     }
+                ],
+                "reviews": [
+                    {
+                        "id": 2,
+                        "body": "Great book!",
+                        "created_at": "2019-12-30T10:35:19.397+04:00",
+                        "author": {
+                            "id": 2,
+                            "email": "selivanova@appbooster.ru",
+                            "full_name": "Selivanova Anna"
+                        }
+                    }
                 ]
             },
             ...
@@ -203,6 +215,18 @@
                     "full_name": "Selivanova Anna",
                     "read_since": "2019-12-29T14:09:17.592+04:00"
                 }
+            ],
+            "reviews": [
+                {
+                    "id": 2,
+                    "body": "Great book!",
+                    "created_at": "2019-12-30T10:35:19.397+04:00",
+                    "author": {
+                        "id": 2,
+                        "email": "selivanova@appbooster.ru",
+                        "full_name": "Selivanova Anna"
+                    }
+                }
             ]
         }
     }
@@ -261,4 +285,42 @@
     422 UNPROCESSABLE ENTITY
     {
         "errors": "You didn't take this book"
+    }
+
+## Рецензии
+
+### Создать рецензию
+
+    POST /api/v1/books/:book_id/reviews
+    
+    PARAMS
+    {
+        book_id: 1,
+        review: {
+            body: "Great book!"
+        }
+    }
+
+    RESPONSE
+    200 OK
+    {
+        "review": {
+            "id": 2,
+            "body": "Great book!",
+            "created_at": "2019-12-30T10:35:19.397+04:00",
+            "author": {
+                "id": 2,
+                "email": "selivanova@appbooster.ru",
+                "full_name": "Selivanova Anna"
+            }
+        }
+    }
+    
+    или
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": {
+            "body": ["can't be blank"]
+        }
     }
