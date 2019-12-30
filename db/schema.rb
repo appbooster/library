@@ -48,9 +48,6 @@ ActiveRecord::Schema.define(version: 2019_12_30_080837) do
     t.integer "available_items_count", default: 1, null: false
   end
 
-  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.bigint "book_id"
