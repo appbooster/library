@@ -4,4 +4,5 @@ class Api::V1::BookSerializer < ActiveModel::Serializer
 
   has_many :active_book_reader_interactions, key: :current_readers, serializer: Api::V1::BookReaderSerializer
   has_many :reviews, serializer: Api::V1::ReviewSerializer
+  has_many :tags
 end

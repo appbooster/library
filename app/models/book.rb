@@ -7,6 +7,9 @@ class Book < ApplicationRecord
 
   has_many :reviews
 
+  has_many :book_tag_joins
+  has_many :tags, through: :book_tag_joins
+
   validates :title, :authors, presence: true
   validates :total_items_count, numericality: { only_integer: true, allow_nil: true }
   validates :available_items_count, numericality: { only_integer: true, allow_nil: true }
