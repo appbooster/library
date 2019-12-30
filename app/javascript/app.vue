@@ -71,13 +71,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-.theme--light.v-tabs-items {
-  background: none;
-}
-</style>
