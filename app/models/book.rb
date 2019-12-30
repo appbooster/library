@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   has_many :readers, through: :book_reader_interactions, source: :user
   has_many :current_readers, through: :active_book_reader_interactions, source: :user
 
+  has_many :reviews
+
   validates :title, :authors, presence: true
   validates :total_items_count, numericality: { only_integer: true, allow_nil: true }
   validates :available_items_count, numericality: { only_integer: true, allow_nil: true }

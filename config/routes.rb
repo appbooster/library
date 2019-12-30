@@ -20,6 +20,8 @@ Rails.application.routes.draw do
           post :take
           post :give_back
         end
+
+        resources :reviews, only: :create
       end
     end
   end
