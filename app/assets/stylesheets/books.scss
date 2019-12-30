@@ -1,0 +1,58 @@
+.book {
+  display: flex;
+  padding-bottom: 12px;
+  border-bottom: 1px solid lightgray;
+}
+.book__img {
+  width: 15%;
+}
+.book__img-item {
+  width: 100%;
+}
+.book__info {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+.book__title {
+  font-size: 14px;
+  color: #333;
+}
+.book__subtitle {
+  font-size: 10px;
+  margin-bottom: 8px;
+  color: gray;
+}
+.book__author {
+  font-size: 10px;
+  color: gray;
+}
+.book__status {
+  white-space: nowrap;
+}
+.book__status_green {
+  color: teal;
+}
+.book__info-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.book__info-left {
+  width: 75%;
+}
+.book__rating {
+  font-weight: bold;
+}
+
+.g-signin-button {
+  /* This is where you control how the button looks. Be creative! */
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+}
