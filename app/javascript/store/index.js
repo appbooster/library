@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import Axios from 'axios';
-import books from './books';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import books from './books'
+import user from './user'
 
 Vue.use(Vuex);
 
@@ -12,5 +12,6 @@ export const store = new Vuex.Store({
   actions: {},
   modules: {
     books,
+    user
   },
 });

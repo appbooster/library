@@ -1,4 +1,9 @@
-import Axios from 'axios';
+import Axios from 'axios'
+const user_token = localStorage.getItem('user-token')
+if (user_token) {
+  Axios.defaults.headers.common['Authorization'] = 'Bearer ' + user_token
+}
+
 
 const state = {
   books: [],
@@ -12,7 +17,6 @@ const getters = {
 
 const mutations = {
   SET_BOOKS: (state, payload) => {
-    console.log("payload", payload)
     state.books = payload
   },
 
@@ -23,12 +27,7 @@ const mutations = {
 
 const actions = {
   GET_BOOKS: async (context, payload) => {
-    let {data} = await Axios.create({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+ 'eyJhbGciOiJIUzI1NiJ9.eyJnb29nbGVfdWlkIjoiMTIzNDU2NzgiLCJleHAiOjE1NzgwNTY3MTN9.xGw_1YYfycgLX1sKJgBP4yjanrQuLYbEn4ncp0pBYiI'
-        }
-    }).get('/api/v1/books')
+    let {data} = await Axios.get('/api/v1/books')
     context.commit('SET_BOOKS', data.books)
   },
 

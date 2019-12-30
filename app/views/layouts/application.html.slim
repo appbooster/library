@@ -8,6 +8,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet" /
     link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel=("    stylesheet") /
+    meta content=("profile email") name="google-signin-scope" /
+    meta content="576276451752-8l6fhai7g02icl7ebb0dop97e4ni7pbl.apps.googleusercontent.com" name="google-signin-client_id" /
+    script src="https://apis.google.com/js/api:client.js"
+    = javascript_pack_tag 'application'
     = javascript_pack_tag 'library_index'
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
   body
     = yield

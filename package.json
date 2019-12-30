@@ -11,6 +11,7 @@
     "material-design-icons-iconfont": "^5.0.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
+    "vue-google-signin-button": "^1.0.4",
     "vue-loader": "^15.8.3",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",

@@ -1,53 +1,31 @@
 <template>
   <div class="bookslist">
-    <v-col cols="12" sm="9">
-      <v-text-field
-        label="Книги"
-        rounded
-        clearable
-        placeholder="Поиск книги"
-        solo
-      ></v-text-field>
-    </v-col>
     <v-col
       v-for="book in BOOKS"
       :key="book.id"
       cols="12"
     >
-      <v-card
-        class="mx-auto"
-        max-width="900"
-        outlined
-        tile
-      >
-        <div class="d-flex flex-no-wrap justify-space-between">
-          <v-avatar
-            class="ma-3"
-            size="250"
-            tile
-          >
-            <v-img :src="book.cover_image"></v-img>
-          </v-avatar>
-          <div>
-            <v-card-title
-              size="300"
-              class="headline"
-              v-text="book.title"
-            ></v-card-title>
-            <v-card-title
-              size="200"
-              v-text="book.subtitle"
-            ></v-card-title>
-            <v-card-subtitle v-text="book.authors"></v-card-subtitle>
+      <div class="book">
+        <div class="book__img">
+          <v-img :src="book.cover_image" class="book__img-item"></v-img>
+        </div>
+        <div class="book__info">
+          <div class="book__info-left">
+            <div class="book__title">{{book.title}}</div>
+            <div class="book__subtitle">{{book.subtitle}}</div>
+            <div class="book__author">{{book.authors}}</div>
+          </div>
+          <div class="book__info-right">
+            <div class="book__rating">4.5</div>
+            <div class="book__status book__status_green">На руках</div>
           </div>
         </div>
-      </v-card>
+      </div>
     </v-col>
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
   import {mapGetters} from 'vuex'
 
   export default {
@@ -57,12 +35,9 @@
         books: []
       };
     },
-    created: function() {
-      this.json_api_url = `/api/v1/books`
-    },
-    computed: mapGetters(['BOOKS']),
+    computed: mapGetters(['USER_PROFILE','BOOKS']),
     mounted: function() {
-      this.$store.dispatch('GET_BOOKS');
+      this.$store.dispatch('GET_BOOKS')
     },
     methods: {
       // SearchQueryChange: function(search_query) {
@@ -71,3 +46,54 @@
     }
   }
 </script>
+
+<style scoped>
+  .book {
+    display: flex;
+    padding-bottom: 12px;
+    border-bottom: 1px solid lightgray;
+  }
+  .book__img {
+    width: 15%;
+  }
+  .book__img-item {
+    width: 100%;
+  }
+  .book__info {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+  }
+  .book__title {
+    font-size: 14px;
+    color: #333;
+  }
+  .book__subtitle {
+    font-size: 10px;
+    margin-bottom: 8px;
+    color: gray;
+  }
+  .book__author {
+    font-size: 10px;
+    color: gray;
+  }
+  .book__status {
+    white-space: nowrap;
+  }
+  .book__status_green {
+    color: teal;
+  }
+  .book__info-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .book__info-left {
+    width: 75%;
+  }
+  .book__rating {
+    font-weight: bold;
+  }
+</style>
