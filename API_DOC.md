@@ -106,6 +106,13 @@
                             "full_name": "Selivanova Anna"
                         }
                     }
+                ],
+                "tags": [
+                    {
+                        "id": 1,
+                        "name": "разработка"
+                    },
+                    ...
                 ]
             },
             ...
@@ -227,6 +234,13 @@
                         "full_name": "Selivanova Anna"
                     }
                 }
+            ],
+            "tags": [
+                {
+                    "id": 5,
+                    "name": "управление"
+                },
+                ...
             ]
         }
     }
@@ -323,4 +337,59 @@
         "errors": {
             "body": ["can't be blank"]
         }
+    }
+
+## Теги
+
+### Список тегов
+    
+    GET /api/v1/tags/
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "tags": [
+            {
+                "id": 1,
+                "name": "разработка"
+            },
+            {
+                "id": 2,
+                "name": "продукт"
+            },
+            ...
+        ]
+    }
+
+### Добавить теги к книге
+
+    POST /api/v1/books/:book_id/tags/add
+    
+    PARAMS
+    {
+        tags: [1, 13] // массив id тегов, которые нужно добавить
+    }
+    
+    RESPONSE
+    200 OK
+    {
+        "book": { ... } // полный ответ см. в GET /api/v1/books/:id
+    }
+
+### Удалить теги у книги
+
+    POST /api/v1/books/:book_id/tags/remove
+    
+    PARAMS
+    {
+        tags: [1, 13] // массив id тегов, которые нужно удалить
+    }
+    
+    RESPONSE
+    200 OK
+    {
+        "book": { ... } // полный ответ см. в GET /api/v1/books/:id
     }

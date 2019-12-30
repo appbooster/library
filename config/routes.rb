@@ -22,7 +22,15 @@ Rails.application.routes.draw do
         end
 
         resources :reviews, only: :create
+        resources :tags, only: [] do
+          collection do
+            post :add
+            post :remove
+          end
+        end
       end
+
+      resources :tags, only: :index
     end
   end
 end

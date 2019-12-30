@@ -10,6 +10,8 @@ class Api::V1::ReviewsController < Api::V1::BaseController
     end
   end
 
+  private
+
   def review_params
     params.require(:review).permit(:body)
   end

@@ -79,6 +79,8 @@ GEM
       activesupport
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    data_migrate (6.2.0)
+      rails (>= 5.0)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -240,6 +242,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   carrierwave
+  data_migrate
   dotenv-rails
   faraday
   jbuilder (~> 2.7)

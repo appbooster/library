@@ -29,6 +29,7 @@ gem 'slim-rails'
 gem 'active_model_serializers'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'carrierwave'
+gem 'data_migrate'
 gem 'dotenv-rails'
 gem 'faraday'
 gem 'jwt'

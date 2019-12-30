@@ -23,6 +23,8 @@ class Api::V1::SessionsController < Api::V1::BaseController
     end
   end
 
+  private
+
   def auth_hash_to_attributes(auth)
     {
       email: auth.info[:email],

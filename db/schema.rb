@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_060840) do
+ActiveRecord::Schema.define(version: 2019_12_30_080837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2019_12_30_060840) do
     t.datetime "returned_at"
     t.index ["book_id"], name: "index_book_reader_interactions_on_book_id"
     t.index ["user_id"], name: "index_book_reader_interactions_on_user_id"
+  end
+
+  create_table "book_tag_joins", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_book_tag_joins_on_book_id"
+    t.index ["tag_id", "book_id"], name: "index_book_tag_joins_on_tag_id_and_book_id", unique: true
+    t.index ["tag_id"], name: "index_book_tag_joins_on_tag_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -40,6 +48,9 @@ ActiveRecord::Schema.define(version: 2019_12_30_060840) do
     t.integer "available_items_count", default: 1, null: false
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.bigint "book_id"
@@ -48,6 +59,10 @@ ActiveRecord::Schema.define(version: 2019_12_30_060840) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +79,8 @@ ActiveRecord::Schema.define(version: 2019_12_30_060840) do
 
   add_foreign_key "book_reader_interactions", "books"
   add_foreign_key "book_reader_interactions", "users"
+  add_foreign_key "book_tag_joins", "books"
+  add_foreign_key "book_tag_joins", "tags"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end
