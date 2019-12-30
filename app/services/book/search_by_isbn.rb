@@ -24,7 +24,7 @@ class Book::SearchByIsbn
       result: {
         title: book_object["title"],
         subtitle: book_object["subtitle"],
-        authors: book_object["authors"].join(", "),
+        authors: book_object["authors"]&.join(", ") || "unknown",
         publisher: book_object["publisher"],
         description: book_object["description"],
         isbn_10: identifiers["ISBN_10"],
