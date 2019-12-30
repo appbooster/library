@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         member do
           post :take
           post :give_back
+          post :subscribe
+          post :unsubscribe
         end
 
         resources :reviews, only: :create

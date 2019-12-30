@@ -7,6 +7,7 @@ class Book::Take
     book.transaction do
       book.decrement!(:available_items_count)
       book.book_reader_interactions.create!(user: user, taken_at: Time.zone.now)
+      book.subscriptions.where(user: user).destroy_all
     end
 
     Result::Success.new(book)
