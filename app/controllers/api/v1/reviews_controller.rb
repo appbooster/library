@@ -4,7 +4,7 @@ class Api::V1::ReviewsController < Api::V1::BaseController
     review = book.reviews.new(user: @current_user, body: review_params[:body])
 
     if review.save
-      render json: review
+      render json: review, serializer: Api::V1::ReviewSerializer
     else
       render json: { errors: review.errors }, status: :unprocessable_entity
     end
