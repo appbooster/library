@@ -3,6 +3,7 @@ class Api::V1::BookSerializer < ActiveModel::Serializer
              :total_items_count, :available_items_count
 
   has_many :active_book_reader_interactions, key: :current_readers, serializer: Api::V1::BookReaderSerializer
+  has_many :subscriptions, key: :subscribers, serializer: Api::V1::BookSubscriberSerializer
   has_many :reviews, serializer: Api::V1::ReviewSerializer
-  has_many :tags
+  has_many :tags, serializer: Api::V1::TagSerializer
 end

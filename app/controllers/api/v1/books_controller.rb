@@ -20,24 +20,29 @@ class Api::V1::BooksController < Api::V1::BaseController
   end
 
   def show
-    book = Book.find(params[:id])
     render json: book
   end
 
   def take
-    book = Book.find(params[:id])
-    result = Book::Take.new.call(book: book, user: @current_user)
-
-    if result.success?
-      render json: result.value, serializer: Api::V1::BookSerializer
-    else
-      render json: result, status: :unprocessable_entity
-    end
+    call_service_and_respond Book::Take
   end
 
   def give_back
-    book = Book.find(params[:id])
-    result = Book::GiveBack.new.call(book: book, user: @current_user)
+    call_service_and_respond Book::GiveBack
+  end
+
+  def subscribe
+    call_service_and_respond Book::Subscribe
+  end
+
+  def unsubscribe
+    call_service_and_respond Book::Unsubscribe
+  end
+
+  private
+
+  def call_service_and_respond(service_klass)
+    result = service_klass.new.call(book: book, user: @current_user)
 
     if result.success?
       render json: result.value, serializer: Api::V1::BookSerializer
@@ -46,7 +51,9 @@ class Api::V1::BooksController < Api::V1::BaseController
     end
   end
 
-  private
+  def book
+    @book ||= Book.find(params[:id])
+  end
 
   def book_params
     permitted_params = %i[title subtitle authors publisher description cover_image page_count isbn_10 isbn_13

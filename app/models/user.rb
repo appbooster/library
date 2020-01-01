@@ -4,6 +4,9 @@ class User < ApplicationRecord
 
   has_many :reviews
 
+  has_many :subscriptions
+  has_many :awaited_books, through: :subscriptions, source: :book
+
   # Does not work on Heroku
   # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Make-Carrierwave-work-on-Heroku
   # mount_uploader :avatar, AvatarUploader

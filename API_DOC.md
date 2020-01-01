@@ -95,6 +95,14 @@
                         "read_since": "2019-12-29T14:09:17.592+04:00"
                     }
                 ],
+                "subscribers": [
+                    {
+                        "id": 2,
+                        "email": "selivanova@appbooster.ru",
+                        "full_name": "Selivanova Anna",
+                        "subscribed_at": "2019-12-30T16:41:26.572+04:00"
+                    }
+                ],
                 "reviews": [
                     {
                         "id": 2,
@@ -223,6 +231,14 @@
                     "read_since": "2019-12-29T14:09:17.592+04:00"
                 }
             ],
+            "subscribers": [
+                {
+                    "id": 2,
+                    "email": "selivanova@appbooster.ru",
+                    "full_name": "Selivanova Anna",
+                    "subscribed_at": "2019-12-30T16:41:26.572+04:00"
+                }
+            ],
             "reviews": [
                 {
                     "id": 2,
@@ -294,11 +310,66 @@
         }
     }
     
-    Если запись о том, что юзер взял эту книгу, не нйдена:
+    Если запись о том, что юзер взял эту книгу, не найдена:
     
     422 UNPROCESSABLE ENTITY
     {
         "errors": "You didn't take this book"
+    }
+    
+### Подписаться на книгу (встать в очередь ожидания)
+    
+    POST /api/v1/books/:id/subscribe
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "book": {                       // полный ответ см. в GET /api/v1/books/:id
+            "id": 2,
+            "title": "Первые 90 дней",
+            ...
+        }
+    }
+    
+    Если книга уже у текущего пользователя на руках:
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "You currently reading this book"
+    }
+    
+    Если пользователь уже подписан на книгу:
+        
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "You already subscribed to this book"
+    }
+    
+### Отменить подписку на книгу
+    
+    POST /api/v1/books/:id/unsubscribe
+    
+    PARAMS
+    NO
+    
+    RESPONSE
+    200 OK
+    {
+        "book": {                       // полный ответ см. в GET /api/v1/books/:id
+            "id": 2,
+            "title": "Первые 90 дней",
+            ...
+        }
+    }
+    
+    Если подписка не найдена:
+    
+    422 UNPROCESSABLE ENTITY
+    {
+        "errors": "You are not subscribed to this book"
     }
 
 ## Рецензии
