@@ -95,6 +95,14 @@
                         "read_since": "2019-12-29T14:09:17.592+04:00"
                     }
                 ],
+                "subscribers": [
+                    {
+                        "id": 2,
+                        "email": "selivanova@appbooster.ru",
+                        "full_name": "Selivanova Anna",
+                        "subscribed_at": "2019-12-30T16:41:26.572+04:00"
+                    }
+                ],
                 "reviews": [
                     {
                         "id": 2,
@@ -221,6 +229,14 @@
                     "email": "selivanova@appbooster.ru",
                     "full_name": "Selivanova Anna",
                     "read_since": "2019-12-29T14:09:17.592+04:00"
+                }
+            ],
+            "subscribers": [
+                {
+                    "id": 2,
+                    "email": "selivanova@appbooster.ru",
+                    "full_name": "Selivanova Anna",
+                    "subscribed_at": "2019-12-30T16:41:26.572+04:00"
                 }
             ],
             "reviews": [
