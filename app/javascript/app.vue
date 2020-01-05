@@ -15,7 +15,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <BooksList />
+            <router-view></router-view>
           </v-row>
         </v-tab-item>
         <v-tab-item
