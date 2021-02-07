@@ -25,19 +25,24 @@ import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(TurbolinksAdapter)
 
 import Vuex from 'vuex'
-
 Vue.use(Vuex)
+
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
 import vuetify from '../plugins/vuetify' // path to vuetify export
 import {store} from '../store'
 import GSignInButton from 'vue-google-signin-button'
 Vue.use(GSignInButton)
 
+import router from '../router'
+
 import App from '../app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify,
+    router,
     store,
     render: h => h(App)
   }).$mount()
